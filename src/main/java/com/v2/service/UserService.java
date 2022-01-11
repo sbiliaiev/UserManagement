@@ -6,10 +6,10 @@ public interface UserService {
 
     UserDto createUser(UserDto dto) throws SQLException;
 
-    UserDto findById(long id);
+    UserDto findById(long id) throws SQLException;
 
-    UserDto updateUser(UserDto dto);
+    UserDto updateUser(UserDto dto) throws SQLException;
 
-    void removeUser(long id);
+    void removeUser(long id) throws SQLException;
 }
 

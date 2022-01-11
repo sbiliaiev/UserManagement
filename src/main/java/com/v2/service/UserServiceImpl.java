@@ -31,21 +31,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findById(long id) {
+    public UserDto findById(long id) throws SQLException {
         return UserDtoMapper.map(
                 repo.findById(id)
         );
     }
 
     @Override
-    public UserDto updateUser(UserDto dto) {
+    public UserDto updateUser(UserDto dto) throws SQLException {
         return UserDtoMapper.map(
                 repo.updateUser(dto.getId(), dto.getName(), dto.getEmail())
         );
     }
 
     @Override
-    public void removeUser(long id) {
+    public void removeUser(long id) throws SQLException {
         repo.removeUser(id);
     }
 }

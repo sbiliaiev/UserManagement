@@ -7,10 +7,10 @@ public interface UserRepository {
 
     User createUser(String name, String email) throws SQLException;
 
-    User findById(long id);
+    User findById(long id) throws SQLException;
 
-    User updateUser(long id, String name, String email);
+    User updateUser(long id, String name, String email) throws SQLException;
 
-    void removeUser(long id);
+    void removeUser(long id) throws SQLException;
 }
 
