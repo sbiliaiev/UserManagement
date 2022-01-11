@@ -1,9 +1,12 @@
 package com.v2.service;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 
 public class UserDto {
-    private final long id; // nullable
+    @Nullable
+    private final Long id; // nullable
     private final String name;
     private final String email;
 
@@ -13,8 +16,14 @@ public class UserDto {
         this.email = email;
     }
 
+    public UserDto(String name, String email) {
+        this.name = name;
+        this.email = email;
+        id = null;
+    }
+
     public long getId() {
-        return id;
+        return id != null ? id : 0;
     }
 
     public String getName() {
@@ -30,9 +39,9 @@ public class UserDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDto userDto = (UserDto) o;
-        return id == userDto.id &&
-            Objects.equals(name, userDto.name) &&
-            Objects.equals(email, userDto.email);
+        return Objects.equals(id, userDto.id) &&
+                Objects.equals(name, userDto.name) &&
+                Objects.equals(email, userDto.email);
     }
 
     @Override
@@ -43,9 +52,9 @@ public class UserDto {
     @Override
     public String toString() {
         return "UserDto{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", email='" + email + '\'' +
-            '}';
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
