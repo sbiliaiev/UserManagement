@@ -7,7 +7,7 @@ public interface UserRepository {
 
     User createUser(String name, String email) throws SQLException;
 
-    User findById(long id) throws SQLException;
+    User findById(long id) throws Exception;
 
     User updateUser(long id, String name, String email) throws SQLException;
 

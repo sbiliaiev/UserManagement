@@ -34,14 +34,17 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findById(long id) throws SQLException {
+    public User findById(long id) throws Exception {
         String query = String.format("SELECT * FROM USERS WHERE id=%s;", id);
         PreparedStatement st = conn.prepareStatement(query);
         st.execute();
         ResultSet result = st.getResultSet();
-        result.next();
+        if (!result.next()) {
+            throw new Exception("User not found");
+        } else {
+            return new User(result.getInt(1), result.getString(2), result.getString(3));
+        }
 
-        return new User(result.getInt(1), result.getString(2), result.getString(3));
     }
 
     @Override

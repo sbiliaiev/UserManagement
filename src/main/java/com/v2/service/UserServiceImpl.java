@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findById(long id) throws SQLException {
+    public UserDto findById(long id) throws Exception {
         return UserDtoMapper.map(
                 repo.findById(id)
         );

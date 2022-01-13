@@ -30,8 +30,9 @@ public class UserServlet extends HttpServlet {
                 response.setStatus(200);
                 response.setHeader("Content-Type", "application/json");
                 response.getOutputStream().println(json);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.setStatus(404);
             }
         }
     }
